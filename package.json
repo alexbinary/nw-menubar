@@ -1,0 +1,25 @@
+{
+  "name": "nw-menubar",
+  "version": "0.0.0",
+  "description": "NW.js menus made easy.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexbinary/nw-menubar.git"
+  },
+  "keywords": [
+    "nw.js",
+    "application",
+    "menu",
+    "menubar"
+  ],
+  "author": "Alexandre Bintz <alexandre@bintz.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexbinary/nw-menubar/issues"
+  },
+  "homepage": "https://github.com/alexbinary/nw-menubar#readme"
+}
