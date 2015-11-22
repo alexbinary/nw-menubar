@@ -2,14 +2,9 @@
 
 NW.js menus made easy.
 
-
-## Usage
-
-Get your application menu bar ready in seconds :
-
 ```javascript
 
-var mb = require('nw-menubar')
+var mb = require('nw-menubar')(require('nw.gui'))
   .defaults('My App') // calls `createMacBuiltin('My App')` on Mac
   .build([
     // let's create a simple 'File' menu
@@ -42,7 +37,7 @@ var mb = require('nw-menubar')
   ]);
 ```
 
-Have dynamic values for `label`, `enabled` or `checked` ?
+Need dynamic values for `label`, `enabled` or `checked` ?
 Simply use functions as values and refresh when needed :
 
 ```javascript
@@ -71,22 +66,19 @@ var mb = require('nw-menubar').build([
   ]);
 ```
 
-**Items** can have functions as values for properties
-`label`, `icon`, `tooltip`, `checkable`, `checked`, `enabled`, and `keys`.
-**Menus** can have functions as values for the `items` property.
+Functions can be used as values for properties
+`label`, `icon`, `tooltip`, `checkable`, `checked`, `enabled`, `keys` and `items`.
 
 
 ## Documentation
 
-### Functions
+### Methods
 
 #### .defaults([appName][, opts])
 
 Create and setup the menu bar.
 On Mac this also creates the default menus (App, Edit and Window).
-
-- `appName` : `string` - name of the app, used in the 'App menu' (Mac only)
-- `opts` : `object` - options passed to `Menu.createMacBuiltin` (Mac only, see https://github.com/nwjs/nw.js/wiki/Menu#menucreatemacbuiltinappname)
+`appName` and `opts` are passed to `Menu.createMacBuiltin()`.
 
 Be careful to call this before you add your menus, as it will remove any existing items.
 
@@ -98,13 +90,13 @@ Be careful to call this before you add your menus, as it will remove any existin
 
 #### .dev()
 
-Adds a menu called "Dev" with the following items :
-- refresh `cmd+R`
-- open dev tools `cmd+shift+i`
+Adds a menu called "Development" with the following items :
+- Refresh `cmd+R`
+- Toggle inspector `cmd+shift+i`
 
 #### .build(menu)
 
-Builds the menu described by `menu`. See below.
+Builds the menu described by `menu`. See below for format explanation.
 
 #### .refresh()
 
@@ -146,9 +138,9 @@ An item has the following properties :
 - `checkable` - boolean
 - `checked` - boolean
 - `enabled` - boolean
-- `keys` - string or array, see below
+- `keys` - string or array, see *Keyboard shortcuts* below
 
-The `label`, `icon`, `tooltip`, `checkable`, `checked`, `enabled` and `key` properties can take either
+The properties `label`, `icon`, `tooltip`, `checkable`, `checked`, `enabled` and `keys` can take either
 a scalar value or
 a function that returns the value.
 
