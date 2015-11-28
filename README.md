@@ -23,7 +23,7 @@ var mb = require('nw-menubar')(require('nw.gui'))
         },
         {
           label: 'Save File',
-          action: app.saveCurrentFile,
+          click: app.saveCurrentFile,
           tooltip: 'Save current file on disk',
           icon: 'ico/save.png',
           keys: 'cmd+s',
@@ -42,7 +42,9 @@ Simply use functions as values and refresh when needed :
 
 ```javascript
 
-var mb = require('nw-menubar').build([
+var mb = require('nw-menubar')(require('nw.gui'))
+  .defaults('My App')
+  .build([
     {
       label: 'Movie',
       items: [
@@ -174,13 +176,13 @@ Example :
       items: [
         {
           label: 'English',
-          action: function() {
+          click: function() {
             player.setAudioTrack('en');
           }
         },
         {
           label: 'French',
-          action: function() {
+          click: function() {
             player.setAudioTrack('fr');
           }
         },
